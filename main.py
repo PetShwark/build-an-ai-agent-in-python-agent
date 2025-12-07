@@ -1,14 +1,19 @@
 import os
 from dotenv import load_dotenv
 from google import genai
+import argparse
 
 def main():
+    parser = argparse.ArgumentParser(description="Chatbot")
+    parser.add_argument("prompt", type=str, help="User prompt")
+    args = parser.parse_args()
+    # Now we can access `args.prompt`
     load_dotenv()
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY not found in environment variables.")
     print("Hello from python-agent!")
-    user_prompt = "Why is Boot.dev such a great place to learn backend development? Use one paragraph maximum."
+    user_prompt = args.prompt
     print("User Prompt:", user_prompt)
     client = genai.Client(api_key=api_key)
     response = client.models.generate_content(
