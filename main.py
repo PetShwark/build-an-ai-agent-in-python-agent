@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from google import genai
+from google.genai import types
 import argparse
 
 def main():
@@ -13,12 +14,12 @@ def main():
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY not found in environment variables.")
     print("Hello from python-agent!")
-    user_prompt = args.prompt
-    print("User Prompt:", user_prompt)
+    messages = [types.Content(role="user", parts=[types.Part(text=args.prompt)])]
+    print("User Prompt:", messages[0].parts[0].text)
     client = genai.Client(api_key=api_key)
     response = client.models.generate_content(
         model="gemini-2.5-flash", 
-        contents=user_prompt
+        contents=messages
         )
     if response.usage_metadata:
         print("Prompt tokens:", response.usage_metadata.prompt_token_count)
