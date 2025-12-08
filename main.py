@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from prompts import system_prompt
-from schema import schema_get_files_info
+from schema import schema_get_files_info, schema_get_file_content, schema_run_python_file, schema_write_file
 import argparse
 
 def main():
@@ -17,7 +17,7 @@ def main():
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY not found in environment variables.")
     available_functions = types.Tool(
-        function_declarations=[schema_get_files_info]
+        function_declarations=[schema_get_files_info, schema_get_file_content, schema_run_python_file, schema_write_file]
     )
     if args.verbose:
         print("Hello from python-agent!")
