@@ -1,10 +1,10 @@
 import os
-from functions.is_subdir import is_subdir
+from functions.is_subpath import is_subpath
 
 def get_files_info(working_directory, directory="."):
     full_path = os.path.join(working_directory, directory)
     print(f"Result for {f"'{directory}'" if directory != '.' else 'current'} directory:")
-    if not is_subdir(working_directory, full_path):
+    if not is_subpath(working_directory, full_path):
         return f'\tError: Cannot list "{directory}" as it is outside the permitted working directory'
     if not os.path.exists(full_path):
         return f'\tError: The directory "{directory}" does not exist.'
