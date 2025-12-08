@@ -13,3 +13,6 @@ wheels/
 *.env
 secrets.json
 .env
+
+# macOS files
+.DS_Store
