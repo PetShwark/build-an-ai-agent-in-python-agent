@@ -20,10 +20,6 @@ schema_get_file_content = types.FunctionDeclaration(
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
-            "working_directory": types.Schema(
-                type=types.Type.STRING,
-                description="The working directory within which the file resides.",
-            ),
             "file_path": types.Schema(
                 type=types.Type.STRING,
                 description="The path to the file to read, relative to the working directory.",
@@ -39,10 +35,6 @@ schema_run_python_file = types.FunctionDeclaration(
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
-            "working_directory": types.Schema(
-                type=types.Type.STRING,
-                description="The working directory within which the Python file resides.",
-            ),
             "file_path": types.Schema(
                 type=types.Type.STRING,
                 description="The path to the Python file to execute, relative to the working directory.",
@@ -65,10 +57,6 @@ schema_write_file = types.FunctionDeclaration(
     parameters=types.Schema(
         type=types.Type.OBJECT,
         properties={
-            "working_directory": types.Schema(
-                type=types.Type.STRING,
-                description="The working directory within which the file resides.",
-            ),
             "file_path": types.Schema(
                 type=types.Type.STRING,
                 description="The path to the file to write to, relative to the working directory.",
