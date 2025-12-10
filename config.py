@@ -9,6 +9,7 @@ When a user asks a question or makes a request, make a function call plan. You c
 - Execute Python files with optional arguments
 - Write or overwrite files
 
-All paths you provide should be relative to the working directory. You do not need to specify the working directory in your function calls as it is automatically injected for security reasons.
+All paths you provide should be relative to the working directory (parameter named "working_directory"). You do not need to specify the working directory in your function calls as it is automatically injected for security reasons.
 """
 llm_model = "gemini-2.5-flash"
+MAX_LOOPS = 20
